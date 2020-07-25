@@ -23,6 +23,11 @@ type Model struct {
 	IsDel      uint8  `json:"is_del"`
 }
 
+const (
+	StateOpen = iota
+	StateClose
+)
+
 func NewDBEngine(setting *setting.DatabaseSettings) (*gorm.DB, error) {
 	var dialect gorm.Dialector
 	if setting.DBType == "mysql" {
@@ -57,5 +62,22 @@ func NewDBEngine(setting *setting.DatabaseSettings) (*gorm.DB, error) {
 		sqlDB.SetMaxIdleConns(setting.MaxIdleConns)
 		sqlDB.SetMaxOpenConns(setting.MaxOpenConns)
 	}
+	_ = db.Callback().Create().Before("gorm:create").Register("update_created_at", updateTimeStampForCreateCallback)
+	_ = db.Callback().Update().Before("gorm:update").Register("update_modified_at", updateTimeStampForUpdateCallback)
+	_ = db.Callback().Delete().Before("gorm:delete").Register("update_deleted_at", deleteCallback)
 	return db, nil
+}
+
+func updateTimeStampForCreateCallback(scope *gorm.DB) {
+
+}
+func updateTimeStampForUpdateCallback(scope *gorm.DB) {
+
+}
+
+func deleteCallback(scope *gorm.DB) {
+
+}
+func addExtraSpaceIfExist(str string) string {
+	return ""
 }

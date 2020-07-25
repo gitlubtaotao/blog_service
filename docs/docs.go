@@ -19,7 +19,11 @@ var doc = `{
         "description": "{{.Description}}",
         "title": "{{.Title}}",
         "termsOfService": "https://github.com/gitlubtaotao/blog_service.git",
-        "contact": {},
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
         "license": {},
         "version": "{{.Version}}"
     },
@@ -273,8 +277,8 @@ type swaggerInfo struct {
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
-	Host:        "",
-	BasePath:    "",
+	Host:        "localhost:8080",
+	BasePath:    "/api/v1",
 	Schemes:     []string{},
 	Title:       "博客系统",
 	Description: "Go 编程之旅, 一起用Go做项目",

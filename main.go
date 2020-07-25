@@ -18,6 +18,12 @@ import (
 // @version 1.0
 // @description Go 编程之旅, 一起用Go做项目
 // @termsOfService https://github.com/gitlubtaotao/blog_service.git
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @host localhost:8080
+// @BasePath /api/v1
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routes.NewRouter()

@@ -115,6 +115,14 @@ func (l *Logger) Info(v ...interface{}) {
 func (l *Logger) InfoF(format string, v ...interface{}) {
 	l.WithLevel(LevelInfo).Output(fmt.Sprintf(format, v...))
 }
+
+func (l *Logger) Error(v ...interface{}) {
+	l.WithLevel(LevelError).Output(fmt.Sprint(v...))
+}
+
+func (l *Logger) ErrorF(format string, v ...interface{}) {
+	l.WithLevel(LevelError).Output(fmt.Sprintf(format, v...))
+}
 func (l *Logger) Fatal(v ...interface{}) {
 	l.WithLevel(LevelFatal).Output(fmt.Sprint(v...))
 }
@@ -130,7 +138,6 @@ func (l *Logger) Panic(v ...interface{}) {
 func (l *Logger) PanicF(format string, v ...interface{}) {
 	l.WithLevel(LevelPanic).Output(fmt.Sprintf(format, v...))
 }
-
 
 // 日志格式化和输出
 func (l *Logger) JSONFormat(message string) map[string]interface{} {

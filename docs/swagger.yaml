@@ -1,5 +1,10 @@
+basePath: /api/v1
+host: localhost:8080
 info:
-  contact: {}
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
   description: Go 编程之旅, 一起用Go做项目
   license: {}
   termsOfService: https://github.com/gitlubtaotao/blog_service.git
