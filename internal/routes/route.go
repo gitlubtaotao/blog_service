@@ -16,15 +16,14 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
-	r.Use(middleware.JWT())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	tag := V1.NewTag()
 	article := V1.NewArticle()
-	r.POST("/api/upload/file", api.UploadFile)
 	r.StaticFS("/static", gin.Dir(global.AppSetting.UploadSavePath, true))
-	apiV1 := r.Group("/api/v1")
+	r.GET("/auth", V1.GetAuth)
+	apiV1 := r.Group("/api/v1").Use(middleware.JWT())
 	{
-		
+		apiV1.POST("/api/upload/file", api.UploadFile)
 		apiV1.POST("/tags", tag.Create)
 		apiV1.DELETE("/tags/:id", tag.Delete)
 		apiV1.PUT("/tags/:id", tag.Update)
@@ -38,8 +37,6 @@ func NewRouter() *gin.Engine {
 		apiV1.PATCH("/articles/:id/state", article.ChangeState)
 		apiV1.GET("/articles", article.List)
 		apiV1.GET("/articles/:id", article.Get)
-		
-		apiV1.GET("/auth", V1.GetAuth)
 	}
 	return r
 }

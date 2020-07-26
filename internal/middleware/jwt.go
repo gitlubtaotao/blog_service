@@ -7,6 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//
+// jwt 验证
 func JWT() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		var (
