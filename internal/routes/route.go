@@ -16,6 +16,8 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
+	r.Use(middleware.Recovery())
+	r.Use(middleware.AppInfo())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	tag := V1.NewTag()
 	article := V1.NewArticle()
@@ -30,7 +32,6 @@ func NewRouter() *gin.Engine {
 		apiV1.PATCH("/tags/:id/state", tag.ChangeState)
 		apiV1.GET("/tags/:id", tag.Get)
 		apiV1.GET("/tags", tag.List)
-		
 		apiV1.POST("/articles", article.Create)
 		apiV1.DELETE("/articles/:id", article.Delete)
 		apiV1.PUT("/articles/:id", article.Update)
