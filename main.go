@@ -13,7 +13,6 @@ import (
 	"time"
 )
 
-
 // @title 博客系统
 // @version 1.0
 // @description Go 编程之旅, 一起用Go做项目
@@ -65,8 +64,13 @@ func setupSetting() error {
 	if err = set.ReadSection("Database", &global.DatabaseSetting); err != nil {
 		return err
 	}
+	if err = set.ReadSection("JWT", &global.JWTSetting); err != nil {
+		return err
+	}
+	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
+	
 	return nil
 }
 
