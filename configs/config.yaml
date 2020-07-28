@@ -1,8 +1,9 @@
 Server:
   RunMode: debug
-  HttpPort: 8080
+  HttpPort: :8080
   ReadTimeout: 60
   WriteTimeout: 60
+
 App:
   DefaultPageSize: 10
   MaxPageSize: 100
@@ -16,6 +17,7 @@ App:
     - .jpg
     - .jpeg
     - .png
+  DefaultContextTime: 60
 Database:
   DBType: mysql
   Username: root
