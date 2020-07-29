@@ -22,6 +22,7 @@ func (a AccessLogWriter) Write(p []byte) (int, error) {
 	}
 	return a.ResponseWriter.Write(p)
 }
+
 func AccessLog() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		bodyWriter := AccessLogWriter{
