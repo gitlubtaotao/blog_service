@@ -27,7 +27,7 @@ func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routes.NewRouter()
 	s := http.Server{
-		Addr:           ":" + global.ServerSetting.HttpPort,
+		Addr:           global.ServerSetting.HttpPort,
 		Handler:        router,
 		ReadTimeout:    global.ServerSetting.ReadTimeout,
 		WriteTimeout:   global.ServerSetting.WriteTimeout,
@@ -67,13 +67,13 @@ func setupSetting() error {
 	if err = set.ReadSection("JWT", &global.JWTSetting); err != nil {
 		return err
 	}
-	if err = set.ReadSection("Email",&global.EmailSetting);err != nil{
+	if err = set.ReadSection("Email", &global.EmailSetting); err != nil {
 		return err
 	}
 	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
-	
+	global.AppSetting.DefaultContextTime *= time.Second
 	return nil
 }
 
@@ -94,5 +94,3 @@ func setupLogger() error {
 	}, "", log.LstdFlags).WithCaller(2)
 	return nil
 }
-
-

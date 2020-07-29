@@ -19,6 +19,7 @@ type AppSettingS struct {
 	UploadServerUrl      string
 	UploadImageMaxSize   int
 	UploadImageAllowExts []string
+	DefaultContextTime   time.Duration
 }
 
 type DatabaseSettings struct {
