@@ -6,6 +6,7 @@ import (
 	"blog_service/internal/routes"
 	"blog_service/pkg/logger"
 	"blog_service/pkg/setting"
+	"blog_service/pkg/tracer"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
@@ -43,11 +44,14 @@ func init() {
 	if err := setupDBEngine(); err != nil {
 		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
+	if err := setupTracer(); err != nil {
+		log.Fatalf("init.setupTracer err: %v", err)
+	}
 	if err := setupLogger(); err != nil {
 		log.Fatalf("init.setupLogger err : %v", err)
 	}
-	
 }
+
 
 //读取系统配置文件
 func setupSetting() error {
@@ -92,5 +96,14 @@ func setupLogger() error {
 		MaxSize:  600,
 		MaxAge:   10,
 	}, "", log.LstdFlags).WithCaller(2)
+	return nil
+}
+
+func setupTracer() error {
+	jaegerTracer, _, err := tracer.NewJaegerTracer("blog-services", "127.0.0.1:6831")
+	if err != nil {
+		return err
+	}
+	global.Tracer = jaegerTracer
 	return nil
 }

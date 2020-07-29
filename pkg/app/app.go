@@ -1,7 +1,6 @@
 package app
 
 import (
-	"blog_service/global"
 	"blog_service/pkg/errcode"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -45,6 +44,5 @@ func (r *Response) ToErrorResponse(err *errcode.Error) {
 	if len(details) > 0 {
 		response["details"] = details
 	}
-	global.Logger.ErrorF("app.BindAndValid errs:%v", details)
 	r.Ctx.JSON(err.StatusCode(), response)
 }
