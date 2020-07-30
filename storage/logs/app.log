@@ -1,7 +1,0 @@
-2020/07/20 13:33:54 {"callers":["/Users/taotao/go_www/src/blog_service/main.go: 37 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1595223234029345000}
-2020/07/20 18:33:28 {"callers":["/Users/taotao/go_www/src/blog_service/main.go: 47 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1595241208648757000}
-2020/07/20 18:37:27 {"callers":["/Users/taotao/go_www/src/blog_service/main.go: 47 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1595241447891260000}
-2020/07/26 15:59:32 {"callers":["/Users/taotao/go_www/src/blog_service/main.go: 46 main.init.0"],"level":"error","message":"app.BindAndValid errs:[]","time":1595750372522935000}
-2020/07/26 15:59:44 {"callers":["/Users/taotao/go_www/src/blog_service/main.go: 46 main.init.0"],"level":"error","message":"app.BindAndValid errs:[]","time":1595750384300736000}
-2020/07/26 17:42:22 {"callers":["/Users/taotao/go_www/src/blog_service/main.go: 46 main.init.0"],"level":"error","message":"app.BindAndValid errs:[]","time":1595756542908413000}
-2020/07/29 10:10:00 {"callers":["/home/xutaotao/www/go_workspace/blog_service/main.go: 47 main.init.0"],"level":"error","message":"app.BindAndValid errs:[]","time":1595988600166832256}
