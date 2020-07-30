@@ -24,6 +24,7 @@ import (
 // @host localhost:8080
 // @BasePath /api/v1
 func main() {
+
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routes.NewRouter()
 	s := http.Server{
